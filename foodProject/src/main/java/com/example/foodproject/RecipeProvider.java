@@ -3,5 +3,5 @@ package com.example.foodproject;
 import java.util.LinkedList;
 
 public interface RecipeProvider {
-    LinkedList<String> FetchRecipes();
+    LinkedList<String> getIngredients();
 }
