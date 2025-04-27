@@ -3,12 +3,30 @@ package com.example.foodproject;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class txtRecipe implements RecipeProvider{
+    private Map<String, Recipe> recipes;
+    private LinkedList<String> allIngredients;
+    private String filePath;
+
+    public txtRecipe(String filePath){
+        this.filePath = filePath;
+        this.recipes = new LinkedHashMap<>();
+        this.allIngredients = new LinkedList<>();
+    }
+
+    public void loadRec() throws IOException{
+        List<Recipe> recipeList = readRecipesFromFile(filePath);
+        for (Recipe recipe: recipeList){
+            recipes.put(recipe.getName(), recipe);
+            for(String ingredient : recipe.getIngredients().keySet()){
+                if (!allIngredients.contains(ingredient)){
+                            allIngredients.add(ingredient);
+                }
+            }
+        }
+    }
     public static List<Recipe> readRecipesFromFile(String filePath) throws IOException{
         List<Recipe> recipes = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new FileReader(filePath));
@@ -54,6 +72,10 @@ public class txtRecipe implements RecipeProvider{
 
     @Override
     public LinkedList<String> getIngredients() {
-        return null;
+        return allIngredients;
+    }
+
+    public Map<String, Recipe> getAllRecipes(){
+        return recipes;
     }
 }

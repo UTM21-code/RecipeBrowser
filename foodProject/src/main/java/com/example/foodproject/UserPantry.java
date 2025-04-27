@@ -9,14 +9,14 @@ public class UserPantry implements IngredientSource {
 
     @Override
     public LinkedList<String> getingredients() {
-        return ingredients;
+        return this.ingredients;
     }
 
     public void setIngredients(LinkedList<String> ingredients) {
         this.ingredients = ingredients;
     }
 
-    public void addIngredient(String Newingredients){
-        ingredients.add(Newingredients);
-    }
+   // public void addIngredient(String Newingredients){
+    //    ingredients.add(Newingredients);
+   // }
 }
