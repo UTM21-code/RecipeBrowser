@@ -5,13 +5,18 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ *
+ */
 public class Recipe {
     private String name;
     private Map<String, String> ingredients;
     private List<String> instructions;
 
 
-
+    /**
+     *
+     */
     public Recipe(){
         this.ingredients = new LinkedHashMap<>();
         this.instructions= new ArrayList<>();

@@ -1,0 +1,29 @@
+Recipe: Spaghetti Carbonara
+Ingredients:
+- Spaghetti: 400g
+- Eggs: 3
+- Pancetta: 150g
+- Parmesan cheese: 50g
+- Black pepper: to taste
+Instructions:
+> Boil spaghetti according to package instructions
+> Fry pancetta until crispy
+> Beat eggs with grated Parmesan
+> Drain spaghetti and mix with pancetta
+> Add egg mixture and stir quickly to create creamy sauce
+> Season with black pepper
+
+Recipe: Chocolate Chip Cookies
+Ingredients:
+- Flour: 2.5 cups
+- Butter: 1 cup
+- Sugar: 1.5 cups
+- Chocolate chips: 2 cups
+- Eggs: 2
+Instructions:
+> Preheat oven to 375°F (190°C)
+> Cream butter and sugars together
+> Beat in eggs
+> Stir in flour and chocolate chips
+> Drop spoonfuls onto baking sheet
+> Bake for 9-11 minutes

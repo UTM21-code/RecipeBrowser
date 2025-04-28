@@ -13,7 +13,7 @@ public class INGMatching {
 
     public Map<Recipe, Double> findMatchingRecipes(){
         Map<Recipe, Double> matches = new LinkedHashMap<>();
-        LinkedList<String> userIngredients = userPantry.getingredients();
+        LinkedList<String> userIngredients = userPantry.getIngredients();
 
         for (Recipe recipe : TxtRecipe.getAllRecipes().values()){
             double matchPer = calculateMatchPer(userIngredients,recipe);
@@ -22,6 +22,13 @@ public class INGMatching {
         return SortByMatchPer(matches);
     }
 
+    /**
+     * This takes the user ingredients and then the recipes and then takes the average of them and then matches the amount of how many ingredients the user has
+     * and the matches them to the specific recipe and divides by  that and then returns it
+     * @param userIngredients
+     * @param recipe
+     * @return
+     */
     private double calculateMatchPer(List<String> userIngredients, Recipe recipe){
         Set<String> recipeIngredients = recipe.getIngredients().keySet();
         if (recipeIngredients.isEmpty()) return 0.0;
@@ -32,7 +39,6 @@ public class INGMatching {
                 matches++;
             }
         }
-
         return (double) matches/ recipeIngredients.size() * 100;
     }
 
@@ -48,6 +54,12 @@ public class INGMatching {
         }
         return false;
     }
+
+    /**
+     * This takes the entries and sorts them based upon the percentages using maps and hashmaps
+     * @param matches
+     * @return
+     */
     private Map<Recipe, Double> SortByMatchPer(Map<Recipe, Double> matches){
         List<Map.Entry<Recipe, Double>> entries = new ArrayList<>(matches.entrySet());
         entries.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
@@ -63,17 +75,21 @@ public class INGMatching {
         Map<Recipe, Double> matches = findMatchingRecipes();
 
         System.out.println("\n Recipe Results");
-
+        if(matches.isEmpty()){
+            System.out.println("no recipes");
+            return;
+        }
         for (Map.Entry<Recipe,Double> entry : matches.entrySet()){
-            System.out.printf("%s: .0f%", entry.getKey().getName(), entry.getValue());
+
+            System.out.printf("%s: %.0f%% match%n", entry.getKey().getName(), entry.getValue());
 
             if (entry.getValue() < 100){
                 System.out.println("Missing Ingredients");
-                Set<String> recuoeUbgresd = entry.getKey().getIngredients().keySet();
-                LinkedList<String> userIngred = userPantry.getingredients();
+                Set<String> RecipeIng = entry.getKey().getIngredients().keySet();
+                LinkedList<String> userIng = userPantry.getIngredients();
 
-                for (String ingredient : recuoeUbgresd){
-                    if (!containsIngredient(userIngred, ingredient)){
+                for (String ingredient : RecipeIng){
+                    if (!containsIngredient(userIng, ingredient)){
                         System.out.println("- " + ingredient);
                     }
                 }
