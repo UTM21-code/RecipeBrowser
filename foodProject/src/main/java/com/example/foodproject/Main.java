@@ -9,7 +9,23 @@ public class Main {
         UserPantry pantry = new UserPantry();
         pantry.addIngredient("Eggs");
         pantry.addIngredient("spaghetti");
+        pantry.addIngredient("Parmesan Cheese");
+        pantry.addIngredient("flour");
+        pantry.addIngredient("butter");
 
+
+        HardCodedRecipe recipe = new HardCodedRecipe();
+
+        INGMatching matcher = new INGMatching(pantry, recipe);
+
+        System.out.println("user Pantry");
+        for (String ingredients: pantry.getIngredients()){
+            System.out.println("- " + ingredients);
+        }
+
+        System.out.println("\n Recipe Matching result:");
+        matcher.displayMatches();
+        /**
         txtRecipe Txt = new txtRecipe("C:\\Users\\rover\\IdeaProjects\\foodProject\\src\\main\\java\\com\\example\\foodproject\\recipes.txt");
         try {
             Txt.loadRec();
@@ -28,7 +44,7 @@ public class Main {
             return;
         }
         Txt.getAllRecipes();
-
+        */
     }
 
 }

@@ -4,18 +4,22 @@ import java.util.*;
 
 public class INGMatching {
     private final UserPantry userPantry;
-    private final txtRecipe TxtRecipe;
+    private final HardCodedRecipe hardCodedRecipe;
 
-    public INGMatching(UserPantry userPantry, txtRecipe TxtRecipe){
+    public INGMatching(UserPantry userPantry, HardCodedRecipe hardCodedRecipe){
         this.userPantry = userPantry;
-        this.TxtRecipe = TxtRecipe;
+        this.hardCodedRecipe = hardCodedRecipe;
     }
 
+    /**
+     * This is to 
+     * @return
+     */
     public Map<Recipe, Double> findMatchingRecipes(){
         Map<Recipe, Double> matches = new LinkedHashMap<>();
         LinkedList<String> userIngredients = userPantry.getIngredients();
 
-        for (Recipe recipe : TxtRecipe.getAllRecipes().values()){
+        for (Recipe recipe : hardCodedRecipe.getAllRecipes().values()){
             double matchPer = calculateMatchPer(userIngredients,recipe);
             matches.put(recipe, matchPer);
         }
